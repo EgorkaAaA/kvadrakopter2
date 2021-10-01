@@ -12,9 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CsrfFilter;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @EnableWebSecurity
 public class WebSecConfig extends WebSecurityConfigurerAdapter {
     private final UserService userService;
@@ -27,11 +24,12 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .antMatchers("/**/post/**").authenticated()
-                .and()
-                .addFilterAfter(new csrfFilter(),
-                        CsrfFilter.class)
+//                .authorizeRequests()
+//                .antMatchers("/**/post/**").authenticated()
+//                .and()
+                .csrf().disable()
+//                .addFilterAfter(new csrfFilter(),
+//                        CsrfFilter.class)
                 .authenticationProvider(authenticationProvider())
                 .httpBasic()
                 .and()
