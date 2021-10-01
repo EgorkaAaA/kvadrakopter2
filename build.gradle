@@ -17,6 +17,7 @@ configurations {
 
 heroku{
     appName = "kvadrolopter"
+    jdkVersion = 11
 }
 
 repositories {
